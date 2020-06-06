@@ -1,11 +1,17 @@
 package wordPlay.driver;
 
+import wordPlay.util.FileProcessor;
+import wordPlay.handler.WordRotator;
+import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.nio.file.InvalidPathException;
+
 /**
  * @author John Doe
  *
  */
 public class Driver {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InvalidPathException, SecurityException, FileNotFoundException, IOException{
 
 		/*
 		 * As the build.xml specifies the arguments as input,output or metrics, in case the
@@ -17,6 +23,10 @@ public class Driver {
 			System.exit(0);
 		}
 		System.out.println("Hello World! Lets get started with the assignment");
+
+		FileProcessor fp = new FileProcessor(args[0]);
+		WordRotator rt = new WordRotator(fp);
+		rt.process();
 
 	}
 }
