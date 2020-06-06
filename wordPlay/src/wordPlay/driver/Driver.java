@@ -22,7 +22,6 @@ public class Driver {
 			System.err.println("Error: Incorrect number of arguments. Program accepts 3 arguments.");
 			System.exit(0);
 		}
-		System.out.println("Hello World! Lets get started with the assignment");
 
 		FileProcessor fp = new FileProcessor(args[0]);
 		WordRotator rt = new WordRotator(fp);
