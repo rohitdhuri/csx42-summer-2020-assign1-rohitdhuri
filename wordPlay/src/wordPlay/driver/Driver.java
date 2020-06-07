@@ -2,6 +2,9 @@ package wordPlay.driver;
 
 import wordPlay.util.FileProcessor;
 import wordPlay.handler.WordRotator;
+import wordPlay.util.Results;
+import wordPlay.util.StdoutDisplayInterface;
+import wordPlay.util.FileDisplayInterface;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.nio.file.InvalidPathException;
@@ -24,8 +27,13 @@ public class Driver {
 		}
 
 		FileProcessor fp = new FileProcessor(args[0]);
-		WordRotator rt = new WordRotator(fp);
+		Results rl = new Results(); 
+		WordRotator rt = new WordRotator(fp, rl);
 		rt.process();
-
+		
+		StdoutDisplayInterface sdi = rl;
+		FileDisplayInterface fdi = rl;
+		sdi.writeStdout();
+		fdi.writeFile();
 	}
 }
