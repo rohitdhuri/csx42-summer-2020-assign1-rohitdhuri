@@ -1,7 +1,7 @@
 package wordPlay.driver;
 
 import wordPlay.util.FileProcessor;
-import wordPlay.handler.WordRotator;
+import wordPlay.helperP.Helper;
 import wordPlay.util.Results;
 import wordPlay.util.StdoutDisplayInterface;
 import wordPlay.util.FileDisplayInterface;
@@ -27,13 +27,19 @@ public class Driver {
 		}
 
 		FileProcessor fp = new FileProcessor(args[0]);
-		Results rl = new Results(); 
-		WordRotator rt = new WordRotator(fp, rl);
-		rt.process();
+		Results rlOutput = new Results(args[1]); 
+		Results rlMetrics = new Results(args[2]);
+		Helper hl = new Helper(fp, rlOutput, rlMetrics);
+		hl.process();
 		
-		StdoutDisplayInterface sdi = rl;
-		FileDisplayInterface fdi = rl;
-		sdi.writeStdout();
-		fdi.writeFile();
+		StdoutDisplayInterface sdiOutput = rlOutput;
+		FileDisplayInterface fdiOutput = rlOutput;
+		StdoutDisplayInterface sdiMetrics = rlMetrics;
+		FileDisplayInterface fdiMetrics = rlMetrics;
+		sdiOutput.writeToStdout();
+		sdiMetrics.writeToStdout();
+		fdiOutput.writeToFile();
+		fdiMetrics.writeToFile();
+
 	}
 }

@@ -3,29 +3,39 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Results implements FileDisplayInterface, StdoutDisplayInterface {
-    public String op;
-    public float a_number_words, a_length_words;
+    private String output;
+    private String metricsResult;
+    private String outputFilePath, metricsFilePath;
+    private String filePath;
 
-    public Results() {
-        op = "";
+    public Results( String path) {
+        filePath = path;
     }
 
-    public void writeStdout() {
-        System.out.println(op);
-        System.out.println("Average number of words: " + a_number_words + "\nAverage length of words: " + a_length_words);
+    public void storeOutput(String buffer)
+    {
+        output = buffer;
     }
 
-    public void writeFile() {
+    public void storeMetrics(String metrics)
+    {
+        output = metrics;
+    }
+
+    public void writeToStdout() {
+        System.out.println(output);
+    }
+
+    public void writeToFile() {
         try {
-            FileWriter outputFile = new FileWriter("output.txt");
-            outputFile.write(op);
+            FileWriter outputFile = new FileWriter(filePath);
+
+            outputFile.write(output);
+            
             outputFile.close();
 
-            FileWriter metricsFile = new FileWriter("metrics.txt");
-            metricsFile.write("Average number of words: " + a_number_words + "\nAverage length of words: " + a_length_words);
-            metricsFile.close();
 
-            System.out.println("Successfully wrote to files.");
+            System.out.println("Successfully wrote to file.");
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
