@@ -14,7 +14,7 @@ import java.nio.file.InvalidPathException;
  *
  */
 public class Driver {
-	public static void main(String[] args) throws InvalidPathException, SecurityException, FileNotFoundException, IOException{
+	public static void main(String[] args){
 
 		/*
 		 * As the build.xml specifies the arguments as input,output or metrics, in case the
@@ -25,21 +25,30 @@ public class Driver {
 			System.err.println("Error: Incorrect number of arguments. Program accepts 3 arguments.");
 			System.exit(0);
 		}
-
-		FileProcessor fp = new FileProcessor(args[0]);
-		Results rlOutput = new Results(args[1]); 
-		Results rlMetrics = new Results(args[2]);
-		Helper hl = new Helper(fp, rlOutput, rlMetrics);
-		hl.process();
-		
-		StdoutDisplayInterface sdiOutput = rlOutput;
-		FileDisplayInterface fdiOutput = rlOutput;
-		StdoutDisplayInterface sdiMetrics = rlMetrics;
-		FileDisplayInterface fdiMetrics = rlMetrics;
-		sdiOutput.writeToStdout();
-		sdiMetrics.writeToStdout();
-		fdiOutput.writeToFile();
-		fdiMetrics.writeToFile();
-
+		try{
+			FileProcessor fp = new FileProcessor(args[0]);
+			Results rlOutput = new Results(args[1]); 
+			Results rlMetrics = new Results(args[2]);
+			Helper hl = new Helper(fp, rlOutput, rlMetrics);
+			hl.process();
+			
+			StdoutDisplayInterface sdiOutput = rlOutput;
+			FileDisplayInterface fdiOutput = rlOutput;
+			StdoutDisplayInterface sdiMetrics = rlMetrics;
+			FileDisplayInterface fdiMetrics = rlMetrics;
+			sdiOutput.writeToStdout();
+			sdiMetrics.writeToStdout();
+			fdiOutput.writeToFile();
+			fdiMetrics.writeToFile();
+		}
+		catch(InvalidPathException e){
+		System.err.println("Error: Invalid Path");
+		}
+		catch(FileNotFoundException e){
+		System.err.println("Error: File Not Found ");
+		}
+		catch(IOException e){
+		System.err.println("Error: IO Exception");
+		}
 	}
 }

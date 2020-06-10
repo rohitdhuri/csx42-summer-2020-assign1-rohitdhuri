@@ -5,19 +5,20 @@ import java.io.IOException;
 
 
 public class WordRotator {
-    float wordCount, wordLength;
-    int lineNumber;
 
-
+    private int j;
 
     public String rotate(String str, int shift) {
         
-        for (int j = 0; j < shift; j++) {
+        for (j = 0; j < shift; j++) {
             str = str.charAt(str.length() - 1) + str.substring(0, str.length() - 1);
         }
         return str;
     }
 
-
+    @Override
+    public String toString(){
+        return "j= " + j;
+    }
 
 }

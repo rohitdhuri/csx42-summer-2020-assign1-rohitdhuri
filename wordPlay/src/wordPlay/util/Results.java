@@ -4,8 +4,6 @@ import java.io.IOException;
 
 public class Results implements FileDisplayInterface, StdoutDisplayInterface {
     private String output;
-    private String metricsResult;
-    private String outputFilePath, metricsFilePath;
     private String filePath;
 
     public Results( String path) {
@@ -29,17 +27,19 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
     public void writeToFile() {
         try {
             FileWriter outputFile = new FileWriter(filePath);
-
             outputFile.write(output);
-            
             outputFile.close();
-
-
             System.out.println("Successfully wrote to file.");
-        } catch (IOException e) {
+        } 
+        catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public String toString(){
+        return "output= " + output + " filePath= " + filePath;
     }
 
 }
