@@ -33,7 +33,6 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
         } 
         catch (IOException e) {
             System.out.println("An error occurred.");
-            e.printStackTrace();
         }
     }
 

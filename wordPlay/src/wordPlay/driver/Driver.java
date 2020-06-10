@@ -8,6 +8,9 @@ import wordPlay.util.FileDisplayInterface;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.nio.file.InvalidPathException;
+import wordPlay.util.exception.MissingLineException;
+import wordPlay.util.exception.SpecialCharacterException;
+import wordPlay.util.exception.EmptyFileException;
 
 /**
  * @author Rohit Mahendra Dhuri
@@ -42,13 +45,22 @@ public class Driver {
 			fdiMetrics.writeToFile();
 		}
 		catch(InvalidPathException e){
-		System.err.println("Error: Invalid Path");
+		System.err.println(e.getMessage());
 		}
 		catch(FileNotFoundException e){
-		System.err.println("Error: File Not Found ");
+		System.err.println(e.getMessage());
 		}
 		catch(IOException e){
-		System.err.println("Error: IO Exception");
+		System.err.println(e.getMessage());
+		}
+		catch(MissingLineException e){
+		System.err.println(e.getMessage());
+		}
+		catch(SpecialCharacterException e){
+		System.err.println(e.getMessage());
+		}
+		catch(EmptyFileException e){
+		System.err.println(e.getMessage());
 		}
 	}
 }
