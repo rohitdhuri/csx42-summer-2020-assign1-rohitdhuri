@@ -29,16 +29,49 @@ public class Driver {
 			System.exit(0);
 		}
 		try{
+
+			/**
+			 * input file path is passed to the FileProcessor while instantiation
+			 *
+			 */			
+
 			FileProcessor fp = new FileProcessor(args[0]);
+
+			/**
+			 * Two objects of result class are created, one for metrics and other for the output string			
+			 */
+
 			Results rlOutput = new Results(args[1]); 
 			Results rlMetrics = new Results(args[2]);
+
+			/**
+			 * both result objects and the file processor object is passed to the helper class
+			 * on instattiation
+			 */			
+
 			Helper hl = new Helper(fp, rlOutput, rlMetrics);
 			hl.process();
 			
+			/**
+			 * output string reference of the result class is cast onto both dislpay 
+			 * interfaces
+			 */
+
 			StdoutDisplayInterface sdiOutput = rlOutput;
 			FileDisplayInterface fdiOutput = rlOutput;
+
+			/**
+			 * metrics reference of the result class is cast onto both display 
+			 * interfaces
+			 */
+
 			StdoutDisplayInterface sdiMetrics = rlMetrics;
 			FileDisplayInterface fdiMetrics = rlMetrics;
+			
+			/**
+			 * writing to file and console using respective interface references
+			 *
+			 */
 			sdiOutput.writeToStdout();
 			sdiMetrics.writeToStdout();
 			fdiOutput.writeToFile();

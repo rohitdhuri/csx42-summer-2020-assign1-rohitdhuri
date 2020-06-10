@@ -3,10 +3,21 @@ import wordPlay.util.FileProcessor;
 import wordPlay.util.Results;
 import java.io.IOException;
 
+/**
+ * Defines a function which rotates the word
+ *
+ * @author Rohit Mahendra Dhuri
+ * 
+ */
 
 public class WordRotator {
 
     private int j;
+
+    /**
+     * rotates the string which is passed as its parameter by the amount of shift
+     * and returns the rotated strings
+     */
 
     public String rotate(String str, int shift) {
         

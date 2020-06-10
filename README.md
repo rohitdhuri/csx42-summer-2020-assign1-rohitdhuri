@@ -1,5 +1,5 @@
 # CSX42: Assignment 1
-## Name: 
+## Name: Rohit Mahendra Dhuri
 
 -----------------------------------------------------------------------
 -----------------------------------------------------------------------
@@ -34,6 +34,18 @@ Note: Arguments accept the absolute path of the files.
 -----------------------------------------------------------------------
 ## Description:
 
+1. Assumption
+All sentences end with a period.
+Absolute path of the input file is provided.
+Sentences are well formatted and special characters are not used.
+
+2. Data structures
+Strings have been used as the output buffer.
+
+3. Code working
+One word is polled at a time, processed and stored onto the output string.
+Some variables are maintained during this processing which are then used to calculate the metrics.
+Both the output string and metrics are then printed on the console and file.
 
 -----------------------------------------------------------------------
 ### Academic Honesty statement:
@@ -45,6 +57,6 @@ I am involved in plagiarism or cheating an official form will be
 submitted to the Academic Honesty Committee of the Watson School to
 determine the action that needs to be taken. "
 
-Date: [ADD_DATE_HERE]
+Date: [06/10/2020]
 
 

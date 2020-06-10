@@ -2,6 +2,19 @@ package wordPlay.util.exception;
 
 public class EmptyFileException extends Exception{
 
+/**
+ * EmptyFileException class
+ * 
+ * @author Rohit Mahendra Dhuri
+ * 
+ */    
+
+    /**
+     * EmptyFileException constructor calling the parent class
+     * object
+     * 
+     * @param s - The error message
+     */
 
     public EmptyFileException(String s){
         super(s);
